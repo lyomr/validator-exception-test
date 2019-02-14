@@ -1,0 +1,194 @@
+{
+  "name": "validator-exception-test",
+  "description": "",
+  "author": "",
+  "version": "0.1.0",
+  "homepage": "",
+  "license": "",
+  "main": "app.js",
+  "readmeFilename": "",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "roosevelt": "../roosevelt",
+    "teddy": "~0.4.27",
+    "roosevelt-less": "~0.7.0",
+    "roosevelt-uglify": "~0.3.0"
+  },
+  "devDependencies": {
+    "husky": "~1.1.4",
+    "lint-staged": "~8.0.4",
+    "nodemon": "~1.18.6",
+    "standard": "~12.0.1",
+    "stylelint": "~9.8.0",
+    "stylelint-config-standard": "~18.2.0"
+  },
+  "rooseveltConfig": {
+    "port": 43711,
+    "enableCLIFlags": true,
+    "generateFolderStructure": true,
+    "localhostOnly": true,
+    "logging": {
+      "http": true,
+      "appStatus": true,
+      "warnings": true,
+      "verbose": false
+    },
+    "minify": true,
+    "htmlValidator": {
+      "enable": true,
+      "separateProcess": {
+        "enable": true,
+        "autoKiller": true,
+        "autoKillerTimeout": 3600000
+      },
+      "port": 48888,
+      "showWarnings": true,
+      "exceptions": [
+        {
+          "requestHeader": "Partial",
+          "modelValue": "_disableValidator"
+        },
+        {
+          "requestHeader": "Foo",
+          "modelValue": "_disableValidator"
+        }
+      ]
+    },
+    "multipart": {
+      "multiples": true
+    },
+    "toobusy": {
+      "maxLagPerRequest": 70,
+      "lagCheckInterval": 500
+    },
+    "bodyParser": {
+      "urlEncoded": {
+        "extended": true
+      },
+      "json": {}
+    },
+    "shutdownTimeout": 30000,
+    "https": {
+      "enable": false,
+      "httpsOnly": false,
+      "httpsPort": 43733,
+      "pfx": false,
+      "keyPath": "null",
+      "passphrase": "null",
+      "ca": "null",
+      "cafile": true,
+      "requestCert": false,
+      "rejectUnauthorized": false
+    },
+    "modelsPath": "mvc/models",
+    "viewsPath": "mvc/views",
+    "viewEngine": [
+      "html:teddy"
+    ],
+    "controllersPath": "mvc/controllers",
+    "errorPages": {
+      "notFound": "404.js",
+      "internalServerError": "5xx.js",
+      "serviceUnavailable": "503.js"
+    },
+    "staticsRoot": "statics",
+    "htmlMinifier": {
+      "enable": true,
+      "exceptionRoutes": false,
+      "options": {
+        "removeComments": true,
+        "collapseWhitespace": true,
+        "collapseBooleanAttributes": true,
+        "removeAttributeQuotes": true,
+        "removeEmptyAttributes": true
+      }
+    },
+    "css": {
+      "sourcePath": "css",
+      "compiler": {
+        "nodeModule": "roosevelt-less",
+        "params": {
+          "cleanCSS": {
+            "advanced": true,
+            "aggressiveMerging": true
+          },
+          "sourceMap": null
+        }
+      },
+      "whitelist": null,
+      "output": ".build/css",
+      "symlinkToPublic": true,
+      "versionFile": null
+    },
+    "js": {
+      "sourcePath": "js",
+      "compiler": {
+        "nodeModule": "roosevelt-uglify",
+        "showWarnings": false,
+        "params": {}
+      },
+      "whitelist": null,
+      "blacklist": null,
+      "output": ".build/js",
+      "symlinkToPublic": true,
+      "bundler": {
+        "bundles": [],
+        "output": ".bundled",
+        "expose": true
+      }
+    },
+    "publicFolder": "public",
+    "favicon": "images/favicon.ico",
+    "staticsSymlinksToPublic": [
+      "images",
+      "css: .build/css",
+      "js: .build/js"
+    ],
+    "versionedPublic": false,
+    "alwaysHostPublic": false,
+    "checkDependencies": true,
+    "cores": 1
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/.build/",
+      "statics/js/.bundled/",
+      "public/",
+      "jsdoc/"
+    ],
+    "ext": "less html js json"
+  },
+  "private": true,
+  "repository": {
+    "private-repo": "git+ssh://somewhere:port/folder/on/server"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "scripts": {
+    "start": "nodemon app.js --production-mode",
+    "production": "nodemon app.js --production-mode",
+    "prod": "nodemon app.js --production-mode",
+    "p": "nodemon app.js --production-mode",
+    "development": "nodemon app.js --development-mode",
+    "dev": "nodemon app.js --development-mode",
+    "d": "nodemon app.js --development-mode",
+    "kill-validator": "node ./node_modules/roosevelt/lib/scripts/killValidator.js",
+    "kv": "node ./node_modules/roosevelt/lib/scripts/killValidator.js",
+    "clean": "node ./node_modules/roosevelt/lib/scripts/appCleanup.js",
+    "config-audit": "node ./node_modules/roosevelt/lib/scripts/configAuditor.js",
+    "standard": "standard",
+    "stylelint": "./node_modules/.bin/stylelint \"statics/css/**/*.less\" --syntax less",
+    "lint": "standard && ./node_modules/.bin/stylelint \"statics/css/**/*.less\" --syntax less",
+    "test": "echo \"TODO: tests\""
+  },
+  "lint-staged": {
+    "*.less": "./node_modules/.bin/stylelint --syntax less",
+    "*.js": "standard"
+  }
+}

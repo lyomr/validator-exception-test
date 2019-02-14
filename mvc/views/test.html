@@ -1,0 +1,25 @@
+<include src='layouts/main'>
+    <arg pageContent>
+      <article>
+        <p>{content.hello}</p>
+        <p>{content.picLabel}</p>
+        <p><img src='{teddyPath}' alt=''></p>
+        <input onclick='loadXMLDoc()' type='submit' name='submit' value='partialException'>
+        <input type='submit' name='submit' value='partialException 2'>
+        <p id='demo'></p>
+        <script>
+            function loadXMLDoc() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        alert(xhr.response);
+                    }
+                }
+                xhr.open('get', 'http://localhost:43711/partial', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                xhr.send();
+            }
+            </script>
+      </article>
+    </arg>
+  </include>
