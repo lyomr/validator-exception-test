@@ -14,7 +14,7 @@ module.exports = function (app) {
     model.content.hello = 'Hi! I\'m a variable trickling down through the MVC structure!'
     model.content.picLabel = 'Here\'s a silly picture of Teddy Roosevelt:'
     model.teddyPath = '/images/teddy.jpg'
-    res.render('test', model)
+    res.render('testing', model)
   })
 
   app.route('/partial').get((req, res) => {
