@@ -12,7 +12,7 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "roosevelt": "https://github.com/lyomr/roosevelt/tree/multipleValidatorExceptions",
+    "roosevelt": "https://github.com/lyomr/roosevelt#multipleValidatorExceptions",
     "teddy": "~0.4.27",
     "roosevelt-less": "~0.7.0",
     "roosevelt-uglify": "~0.3.0"
