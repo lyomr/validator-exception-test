@@ -20,9 +20,10 @@ module.exports = function (router, app) {
   router.route('/partial').get((req, res) => {
     console.log('PARTIAL CALLED')
     res.status(200).render('partial')
+    res.send('I am in partial')
   })
 
   router.route('/test').get((req, res) => {
-    res.status(200).send('<!DOCTYPE html><html><body><h1>The template Tag</h1><p>Hello World</p></body></html>')
+    res.status(200).send('Hello World')
   })
 }
