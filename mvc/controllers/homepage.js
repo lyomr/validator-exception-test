@@ -20,7 +20,6 @@ module.exports = function (router, app) {
   router.route('/partial').get((req, res) => {
     console.log('PARTIAL CALLED')
     res.status(200).render('partial')
-    res.send('I am in partial')
   })
 
   router.route('/test').get((req, res) => {
