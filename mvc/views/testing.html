@@ -4,22 +4,36 @@
         <p>{content.hello}</p>
         <p>{content.picLabel}</p>
         <p><img src='{teddyPath}' alt=''></p>
-        <input onclick='loadXMLDoc()' type='submit' name='submit' value='partialException'>
-        <input type='submit' name='submit' value='partialException 2'>
+        <input onclick='RedirectToPartial()' type='submit' name='submit' value='partialException'>
+        <input onclick='RedirectToTest()' type='submit' name='submit' value='partialException 2'>
         <p id='demo'></p>
         <script>
-            function loadXMLDoc() {
+            function RedirectToPartial() {
+              var xhttp = new window.XMLHttpRequest()
+              xhttp.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      alert(xhr.response);
+                  }
+              }
+              xhttp.open('get', 'http://localhost:43711/partial', true);
+              xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+              xhttp.setRequestHeader('Partial', 'true')
+              xhr.send();
+            }
+
+            function RedirectToTest() {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         alert(xhr.response);
                     }
                 }
-                xhr.open('get', 'http://localhost:43711/partial', true);
+                xhr.open('get', 'http://localhost:43711/test', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                xhttp.setRequestHeader('foo', 'true')
                 xhr.send();
             }
-            </script>
+          </script>
       </article>
     </arg>
   </include>

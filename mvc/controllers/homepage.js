@@ -18,11 +18,12 @@ module.exports = function (router, app) {
   })
 
   router.route('/partial').get((req, res) => {
-    console.log('PARTIAL CALLED')
+    console.log('PARTIAL ROUTE CALLED')
     res.status(200).render('partial')
   })
 
   router.route('/test').get((req, res) => {
-    res.status(200).send('Hello World')
+    console.log('TEST ROUTE CALLED')
+    res.status(200).render('test')
   })
 }
