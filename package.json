@@ -47,7 +47,7 @@
       "port": 48888,
       "showWarnings": true,
       "exceptions": {
-          "requestHeader": ["Partial"],
+          "requestHeader": "Partial",
           "modelValue": "_disableValidator"
       }
     },
