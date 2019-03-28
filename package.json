@@ -46,16 +46,10 @@
       },
       "port": 48888,
       "showWarnings": true,
-      "exceptions": [
-        {
-          "requestHeader": "Partial",
+      "exceptions": {
+          "requestHeader": ["Partial"],
           "modelValue": "_disableValidator"
-        },
-        {
-          "requestHeader": "Foo",
-          "modelValue": "_disableValidator"
-        }
-      ]
+      }
     },
     "multipart": {
       "multiples": true
@@ -71,6 +65,7 @@
       "json": {}
     },
     "shutdownTimeout": 30000,
+    "cleanTimer": 604800000,
     "https": {
       "enable": false,
       "httpsOnly": false,
@@ -149,6 +144,7 @@
     ],
     "versionedPublic": false,
     "alwaysHostPublic": false,
+    "routers": false,
     "checkDependencies": true,
     "cores": 1
   },
